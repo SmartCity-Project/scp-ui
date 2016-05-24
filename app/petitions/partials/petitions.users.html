@@ -1,0 +1,44 @@
+<div data-ui-view="" class="content" class="petition-page top10">
+    <div class="row">
+        <div class="col-md-12"> 
+            <tags-input class="bootstrap"
+                        name="tags"
+                        display-property="name"
+                        ng-model="PetitionSearchCriteria.tags"
+                        allow-leftover-text="false"
+                        load-on-focus="true"
+                        load-on-empty="true"
+                        max-results-to-show="32"
+                        add-on-blur="false"
+                        add-from-autocomplete-only="true"
+                        on-tag-added="loadPetitions(true)"
+                        on-tag-removed="loadPetitions(true)"
+                        placeholder="Choose tags">
+                <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+
+            <ui-select ng-model="PetitionSearchCriteria.petitionStatus" id="value"
+                       on-select="loadPetitions(true)"
+                       on-remove="loadPetitions(true)"
+                       theme="bootstrap" 
+                       close-on-select="true"
+                       ng-disabled="false"
+                       title="Choose an petition state">
+                <ui-select-match placeholder="Select petition status">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="ps.value as ps in petitionStatusList | filter:$select.search">
+                  {{ps.name}}
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12"> 
+            <div class="content feed-list"
+                when-scrolled="loadPetitions(false)" percent="80">
+                <div ng-hide="petitions.length">loading... or no petitions found</div>
+                <div ng-include="'app/petitions/partials/petitions.list.html'"></div>
+            </div>   
+        </div>         
+    </div>
+</div>

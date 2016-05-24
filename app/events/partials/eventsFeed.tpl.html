@@ -1,0 +1,6 @@
+<div class="content event-feed-list"
+     when-scrolled="loadEvents(false)" percent="80">
+        <div ng-hide="events.length">loading... or no events found</div>
+        <div ng-include="'app/events/partials/events.list.html'"/> 
+    </div>
+</div>

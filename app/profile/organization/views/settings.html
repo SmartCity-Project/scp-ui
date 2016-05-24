@@ -1,0 +1,167 @@
+<div data-ui-view="" class="content" class="top10">
+    <div class="row">
+        <article class="col-sm-12">
+            <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-file-text"></i> </span>
+                    <h2>Adaptive Criteria (Auto save on change)</h2>
+                </header>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <tags-input class="bootstrap"
+                                        name="locations"
+                                        display-property="name"
+                                        ng-model="organization.favoriteLocations"
+                                        allow-leftover-text="false"
+                                        load-on-focus="true"
+                                        load-on-empty="true"
+                                        max-results-to-show="32"
+                                        add-on-blur="false"
+                                        add-from-autocomplete-only="true"
+                                        on-tag-added="saveFavoriteLocaocation($tag, 'added')"
+                                        on-tag-removed="saveFavoriteLocaocation($tag, 'removed')"
+                                        placeholder="Choose supporting locations">
+                                <auto-complete source="loadLocations($query)"></auto-complete>
+                            </tags-input>
+                        </div>
+                        <div class="row">
+                            <tags-input class="bootstrap"
+                                        name="tags"
+                                        display-property="name"
+                                        ng-model="organization.favoriteTags"
+                                        allow-leftover-text="false"
+                                        load-on-focus="true"
+                                        load-on-empty="true"
+                                        max-results-to-show="32"
+                                        add-on-blur="false"
+                                        add-from-autocomplete-only="false"
+                                        on-tag-added="saveFavoriteTag($tag, 'added')"
+                                        on-tag-removed="saveFavoriteTag($tag, 'removed')"
+                                        placeholder="Choose favorite tags">
+                                <auto-complete source="loadTags($query)"></auto-complete>
+                            </tags-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    
+    </div>
+    
+<!--
+    <div class="row">
+        Create users (ROLE_ADMIN) for this organization
+    </div>
+-->
+    
+    <div class="row">
+         <article class="col-sm-12">
+            <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-file-text"></i> </span>
+                    <h2>Organization Base Information</h2>
+                </header>
+                <div class="panel">
+                    <div class="panel-body">
+                        <form ng-submit="saveOrgBaseInfo()">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input class="form-control" 
+                                                   placeholder="Name" 
+                                                   type="text" 
+                                                   ng-model="organization.name"
+                                                   ng-required
+                                                   data-message="Please specify organization name">
+                                        </div>
+                                    </div>                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"> <i class="fa fa-globe fa-lg fa-fw"></i></span>
+                                                <input class="form-control" 
+                                                       type="url" 
+                                                       name="url" 
+                                                       ng-model="organization.url" 
+                                                       placeholder="Url">
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-map-marker fa-lg fa-fw"></i></span>
+                                                <div angular-google-maps-geocoder 
+                                                     on-select-callback="selectedResult(item, model, label)"
+                                                     output="out"
+                                                     placeholder="Give an address"
+                                                     data-smart-validate-input
+                                                     min-length="5"
+                                                     wait-ms="500"/>
+                                            </div>
+                                        </div>
+                                        <div class="map_container pbh20 col-sm-12">
+                                            <div class="map_canvas">
+                                                <ui-gmap-google-map center='map.center' 
+                                                                    control='control'
+                                                                    zoom='map.zoom'>
+                                                    <ui-gmap-markers models="markers" 
+                                                                     coords="'self'">
+<!--
+                                                        <ui-gmap-windows show="'showWindow'"
+                                                                         closeClick="'closeClick'" 
+                                                                         ng-cloak>
+                                                            <p ng-non-bindable>
+                                                                {{organization.address.country}}
+                                                                <br>
+                                                                {{organization.address.city}}
+                                                                <br>
+                                                                {{organization.address.street}} {{organization.address.number}}
+                                                                <br>
+                                                                {{organization.address.poBox}}
+                                                            </p>
+
+                                                        </ui-gmap-windows>
+-->
+                                                    </ui-gmap-markers>
+                                                </ui-gmap-google-map>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <br>
+                                            <textarea class="form-control" 
+                                                  placeholder="Description" 
+                                                  type="text" 
+                                                  ng-model="organization.description">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </article>
+    </div>
+    
+<!--
+    <div class="row">
+        <div ng-include="'app/profile/contacts/views/contact.html'"
+    </div>
+-->
+</div>

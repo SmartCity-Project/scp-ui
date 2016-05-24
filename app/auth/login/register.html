@@ -1,0 +1,122 @@
+<header id="header"  class="animated fadeInDown" >
+
+    <div id="logo-group">
+        <span id="logo"> <img src="styles/img/scp-big-logo.png" alt="SmartCity Project" style="width:210px;"> </span>
+ </span>
+    </div>
+
+    <span id="extr-page-header-space">
+        <span class="hidden-mobile hiddex-xs">Already registered?</span> <a ui-sref="login" class="btn btn-danger">Sign In</a> </span>
+
+</header>
+<div id="main" role="main"  class="animated fadeInDown" >
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <div class="row">
+            
+            <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 text-center animated fadeInDown">
+                <div class="well no-padding">
+
+                    <form id="smcity-register" ng-submit="register()" class="smart-form client-form">
+                        <header>
+                       		 Registration is FREE*
+                    	</header>
+                    	
+                    	<fieldset name="baseInfo">
+                            <div class="row">
+                                <section class="col col-md-6">
+                                    <label class="input">
+                                        <input required="true" type="text" ng-model="userRegister.firstName" name="firstName" placeholder="First name">
+                                    </label>
+                                </section>
+                                <section class="col col-md-6">
+                                    <label class="input">
+                                        <input required="true" type="text" ng-model="userRegister.lastName" name="lastName" placeholder="Last name">
+                                    </label>
+                                </section>
+                            </div>                         
+                        </fieldset>
+                    	
+                        <fieldset name="crendentialsInfo">
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input required="true" type="email" ng-model="userRegister.email" name="email" placeholder="Email address (Username)">
+                            </section>
+
+                            <section>
+                                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                    <input required="true" type="password" ng-model="userRegister.password" name="password" placeholder="Password" id="password">
+                                    <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+                            </section>
+
+                        </fieldset>
+                        
+                        
+                       
+                        <footer>
+                        
+                        	<section>                           
+                                <label class="checkbox">
+                                    <input type="checkbox" name="orgCheck" id="orgCheck">
+                                    <i></i>Are you an organization?</label>
+                            </section>
+                        
+            				<section>                           
+                                <label class="checkbox">
+                                    <input type="checkbox" name="terms" id="terms">
+                                    <i></i>I agree with the <a href="#" data-toggle="modal" data-target="#myModal"> Terms and Conditions </a></label>
+                            </section>            
+			                        
+                            <button class="btn btn-primary">
+                                Register
+                            </button>
+                        </footer>
+
+                        <div class="message">
+                            <i class="fa fa-check"></i>
+                            <p>
+                                Thank you for your registration!
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+</div>
+<div class="modal-body custom-scroll terms-body">
+
+    <div id="left">
+
+        <h1>SMARTCITY PROJECT TERMS & CONDITIONS TEMPLATE</h1>
+
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="i-close"> Close
+    </button>
+
+<!--    <button type="button" class="btn btn-danger pull-left" id="print">
+        <i class="fa fa-print"></i> Print
+    </button>-->
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

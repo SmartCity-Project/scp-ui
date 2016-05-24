@@ -1,0 +1,92 @@
+<div id="content" ng-controller='ProfileOrgCtrl'>
+
+<!-- row -->
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="well well-light well-sm no-margin no-padding">
+            <div class="row">
+                <div class="map_container pbh20 col-sm-12">
+                    <div class="map_canvas">
+                        <ui-gmap-google-map center='map.center' 
+                                            zoom='map.zoom'>
+                            <ui-gmap-markers models="markers" 
+                                             idKey="id"
+                                             coords="'self'"
+                                             options="'options'">
+                            </ui-gmap-markers>
+                        </ui-gmap-google-map>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-3 profile-pic">
+                            <img src="styles/img/avatars/fa-users-img.png" style="background-color:white;">
+
+                            <div class="padding-10">
+                                <h4 class="font-md"><strong>{{profile.totalParticipations}}</strong>
+                                    <br>
+                                    <small>Total Participated Events</small>
+                                </h4>
+                                <br>
+                                <h4 class="font-md"><strong>{{profile.totalPetitions}}</strong>
+                                    <br>
+                                    <small>Total Published Petitions</small>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h1><span class="semi-bold">{{profile.name}}</span>
+                                <br>
+                                <small> Address: 
+                                {{profile.address.country}}, {{profile.address.city}}
+                                <br>
+                                {{profile.address.street}} {{profile.address.number}} 
+                                {{profile.address.poBox}}</small>
+                            </h1>
+
+                            <br>
+
+                            <br>
+
+                            <p class="font-md">
+                                <i>Supported Locations: </i>
+                                <span class="control-label1" ng-repeat-start="location in profile.favoriteLocations track by location.name">{{location.name}}</span> 
+                                <span ng-repeat-end>{{$last ? '' : ', '}}</span>
+                            </p>
+
+                            <br>
+
+                            <p class="font-md">
+                                <i>About us..</i>
+                            </p>
+
+                            <p>
+                                {{profile.description}}
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <h2 class="row-seperator-header"><small>Petitions</small></h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr>
+                    <div class="padding-10">
+                        <div class="content feed-list"
+                             when-scrolled="loadPetitions(false)" 
+                             percent="80">
+                                <div ng-hide="petitions.length">loading... or no petitions found</div>
+                                <div ng-include="'app/petitions/partials/petitions.list.html'">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+    <!-- end row -->
+        </div>
+    </div>
+</div>
+<!-- end row -->
+</div>

@@ -1,0 +1,103 @@
+<div data-ui-view="" class="content" class="petition-page">
+<!--
+    <div class="row">
+        <div class="col-md-12">
+            <article class="col-sm-12">
+                <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-line-chart"></i> </span>
+                        <h2>Plot signatures - goal</h2>
+                    </header>
+                    <div>
+                    
+                    </div>
+                </div>
+            </article>     
+        </div>
+    </div>
+-->
+    <div class="row top10">
+        <div class="row">
+        <div class="col-md-12">
+            <article class="col-sm-12">
+                <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Petitions</h2>
+                            <button type="button" 
+                                    class="btn btn-info btn-sm"
+                                    style="margin-bottom:8px; float:right;"
+                                    ng-click="createForm()">Create</button>
+                        </header>
+                        <div>
+                            <div class="widget-body no-padding">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Title</th>
+                                                <th>Goal</th>
+                                                <th>Total signs</th>
+                                                <th><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Ends by </th>
+                                                <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Created </th>
+                                                <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Modified </th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="petition in petitions | orderBy:predicate:reverse">
+                                                <td>{{petition.id}}</td>
+                                                <td>{{petition.title}}</td>
+                                                <td>{{petition.goal}}</td>
+                                                <td>{{petition.aggregatedSignatures.totalSignatures}}</td>
+                                                <td>{{petition.endBy | date:'yyyy-MM-dd'}}</td>
+                                                <td>{{petition.tracking.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                                <td>{{petition.tracking.modified | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                                <td class="action-column">
+                                                    <button type="button" class="btn btn-info btn-sm" ng-click="edit(petition)">Edit</button>
+                                                    <button type="button" class="btn btn-info btn-sm" confirm="Are you sure?" confirm-settings="{size: 'sm'}" ng-click="remove($index, petition.id)">Remove</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <td colspan="8">
+                                                <div class="pagination">
+                                                    <ul class="pager">
+                                                        <li>
+                                                            <a href="" ng-click="prevPage()">Previous</a>
+                                                        </li>
+                                                        <li ng-repeat="n in range()"
+                                                          ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                          <a href="">{{n+1}}</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" ng-click="nextPage()">Next</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+        </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <article class="col-sm-12" ng-hide="!showForm">
+                    <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-file-text"></i> </span>
+                            <h2>Form</h2>
+                        </header>
+                        <div ng-include="'app/petitions/partials/petition.form.html'"/>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

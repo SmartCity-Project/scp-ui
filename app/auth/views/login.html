@@ -1,0 +1,65 @@
+<header id="header"  class="animated fadeInDown" >
+
+    <div id="logo-group">
+        <span id="logo"> <img src="styles/img/logo.png" alt="SmartAdmin"> </span>
+    </div>
+
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a
+           ui-sref="register" class="btn btn-danger">Create account</a> </span>
+
+</header>
+<div id="main" role="main"  class="animated fadeInDown" >
+
+    <div id="content" class="container">
+        <div class="well no-padding">
+                    <form id="loginForm" ng-submit="login()" class="smart-form client-form" data-smart-validate-form>
+                        <header>
+                            Sign In
+                        </header>
+                        <fieldset>
+                            <section>
+                                <label class="label">E-mail</label>
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="email" name="email"
+                                           data-smart-validate-input
+                                           data-required
+                                           data-email
+                                           data-message-required="Please enter your email address"
+                                           data-message-email="Please enter a VALID email address"
+                                           ng-model="credentials.username">
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+                                        Please enter email address</b></label>
+                            </section>
+                            <section>
+                                <label class="label">Password</label>
+                                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                   <input type="password" name="password"
+                                          data-smart-validate-input
+                                          data-required
+                                          data-minlength="4"
+                                          data-maxnlength="20"
+                                          data-message="Please enter your email password"
+                                          ng-model="credentials.password">
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter
+                                        your password</b> </label>
+
+                                <div class="note">
+                                    <a ui-sref="forgotPassword">Forgot password?</a>
+                                </div>
+                            </section>
+                            <section>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="remember" checked>
+                                    <i></i>Stay signed in</label>
+                            </section>
+                        </fieldset>
+                        <footer>
+                            <button type="submit" class="btn btn-primary" id="login" name="login"
+                    				ng-disabled="loginForm.$invalid">
+                                Sign in
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+    </div>
+</div>

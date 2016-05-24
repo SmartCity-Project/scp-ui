@@ -1,0 +1,49 @@
+<header id="header"  class="animated fadeInDown" >
+
+    <div id="logo-group">
+        <span id="logo"> <img src="styles/img/scp-big-logo.png" alt="SmartCity Project" style="width:210px;"> </span>
+ </span>
+    </div>
+
+<!--
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a
+           ui-sref="register" class="btn btn-danger">Create account</a> </span>
+-->
+
+</header>
+<div id="main" role="main"  class="animated fadeInDown" >
+	<div class="container">
+	    <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 text-center animated fadeInDown">
+	            <div>
+	                <h1 class="logo-name">Smart City Project</h1>
+	            </div>
+	            <h3>welcome</h3>
+	
+	            <p>
+	            </p>
+	
+	            <p>Login in. To see it in action.</p>
+
+                <form ng-submit="login()" id="loginForm" class="m-t" role="form">
+	                <div class="form-group">
+	                    <input type="email" class="form-control" ng-model="credentials.email" placeholder="Email" required="true">
+	                </div>
+	                <div class="form-group">
+	                    <input type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="true">
+	                </div>
+	                <button ng-disabled="loading" 
+	                	class="btn btn-primary btn-block m-b">Login</button>
+	
+					<br>
+
+	                <a ui-sref="account.forgot">
+	                    <small>Forgot password?</small>
+	                </a>
+
+	            </form>
+	            
+	        </div>
+	    </div>
+	</div>
+</div>

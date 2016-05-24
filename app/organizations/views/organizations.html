@@ -1,0 +1,24 @@
+<div data-ui-view="" class="content">
+    <div class="row top10">
+        <div class="col-md-12 col-sm-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Total Paticipations</th>
+                            <th>Total Petitions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="org in organizations | orderBy:predicate:reverse">
+                            <td><span class="name"><b><a ui-sref="app.profile({type:'organization', id:'{{org.id}}'})">{{org.name}}</a></b> </span></td>
+                            <td>{{org.totalParticipations}}</td>
+                            <td>{{org.totalPetitions}}</td>
+                        </tr>
+                    </tbody>
+                 </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div data-ui-view="" class="content" class="petition-page">
+<!--
+    <div class="row">
+        <div class="col-md-12">
+            <article class="col-sm-12">
+                <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-line-chart"></i> </span>
+                        <h2>Plot signatures - goal</h2>
+                    </header>
+                    <div>
+                    
+                    </div>
+                </div>
+            </article>     
+        </div>
+    </div>
+-->
+    <div class="row top10">
+        <div class="row">
+        <div class="col-md-12">
+            <article class="col-sm-12">
+                <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Participated Events</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Event State</th>
+                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Created </th>
+                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Modified </th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="event in events | orderBy:predicate:reverse">
+                                            <td>{{event.title}}</td>
+<!--                                            <td>{{event.eventState}}</td>-->
+                                            <td>
+                                                <ui-select ng-model="event.eventState" id="value"
+                                                           on-select="modifyEventState(event.id, event.eventState)"
+                                                           theme="bootstrap" 
+                                                           close-on-select="true"
+                                                           ng-disabled="false"
+                                                           title="event state">
+                                                    <ui-select-match placeholder="Select event state">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="es.value as es in eventStates | filter:$select.search">
+                                                      {{es.name}}
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </td>
+                                            <td>{{event.tracking.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                            <td>{{event.tracking.modified | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                            <td class="action-column">
+<!--                                                <button type="button" class="btn btn-info btn-sm" ng-click="edit(event)">Edit</button>-->
+                                                <button type="button" class="btn btn-info btn-sm" confirm="Are you sure?" confirm-settings="{size: 'sm'}" ng-click="participate(event.id)">Unparticipate</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <td colspan="5">
+                                            <div class="pagination">
+                                                <ul class="pager">
+                                                    <li>
+                                                        <a href="" ng-click="prevPage()">Previous</a>
+                                                    </li>
+                                                    <li ng-repeat="n in range()"
+                                                      ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                      <a href="">{{n+1}}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="" ng-click="nextPage()">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div> 
+        </div>
+<!--
+        <div class="row">
+            <div class="col-md-12">
+                <article class="col-sm-12" ng-hide="!showForm">
+                    <div jarvis-widget id="standard-datatable-widget" data-widget-color="darken" data-widget-editbutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-file-text"></i> </span>
+                            <h2>Form</h2>
+                        </header>
+                    </div>
+                </article>
+            </div>
+        </div>
+-->
+    </div>
+</div>

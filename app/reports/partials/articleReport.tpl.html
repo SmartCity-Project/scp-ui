@@ -1,0 +1,18 @@
+<div class="dropdown" ng-show=reportMenu ng-controller='ArticleReportCtrl'>
+    <button class="btn btn-default dropdown-toggle" 
+            type="button" 
+            data-toggle="dropdown" 
+            ng-click="toggled">
+        <span>
+            <i class="fa fa-info-circle"></i> Report <i class="fa fa-angle-down"></i>
+        </span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="reportMenu">
+        <li>
+            <a role="menuitem" ng-click='reportDocument(articleType, articleData.id, "spam")'>spam</a>
+        </li>
+        <li>
+            <a role="menuitem" ng-click='reportDocument(articleType, articleData.id, "annoying")'>annoying</a>
+        </li>
+    </ul>
+</div>

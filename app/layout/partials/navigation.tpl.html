@@ -1,0 +1,79 @@
+<aside id="left-panel">
+
+    <!-- User info -->
+    <div login-info></div>
+    <!-- end user info -->
+
+    <nav>
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul data-smart-menu>
+
+
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.home" title="Home">
+                    <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+            </li>
+
+            <li ng-show="!isAdmin" data-ui-sref-active="active">
+                <a data-ui-sref="app.events" title="Events"><i class="fa fa-lg fa-fw fa-map-marker"></i><span
+                        class="menu-item-parent">Events</span></a>
+            </li>
+            
+            <li ng-show="isAdmin" data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">Events</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.events" title="Petitions"><span
+                                class="menu-item-parent">Events</span></a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.events.participations" title="Participations"><span
+                                class="menu-item-parent">Participacions</span></a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li ng-show="!isAdmin" data-ui-sref-active="active">
+                <a data-ui-sref="app.petitions" title="Petitions"><i class="fa fa-lg fa-fw fa-list-alt"></i><span
+                        class="menu-item-parent">Petitions</span></a>
+            </li>
+            
+            <li ng-show="isAdmin" data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Petitions</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.petitions" title="Petitions"><span
+                                class="menu-item-parent">Petitions</span></a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.petitions.organization" title="Manage my petitions"><span
+                                class="menu-item-parent">Manage my petitions</span></a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.organizations" title="Organizations"><i class="fa fa-lg fa-fw fa-users"></i><span
+                        class="menu-item-parent">Organizations</span></a>
+            </li>
+            
+            <li ng-show="isAdmin" data-ui-sref-active="active">
+                <a data-ui-sref="app.settings" title="Settings">
+                    <i class="fa fa-lg fa-fw fa-cog"></i> <span class="menu-item-parent">Settings</span></a>
+            </li>
+
+        </ul>
+
+        <!-- NOTE: This allows you to pull menu items from server -->
+        <!-- <ul data-smart-menu-items="/api/menu-items.json"></ul> -->
+    </nav>
+
+  <span class="minifyme" data-action="minifyMenu" minify-menu>
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>

@@ -1,0 +1,50 @@
+<div id="content" ng-controller='ProfileUserCtrl'>
+
+<!-- row -->
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="well well-light well-sm no-margin no-padding">
+            <div class="row">
+                <div class="col-sm-12 pbh10">
+
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-3 profile-pic">
+                            <img src="styles/img/avatars/fa-user-img.png" style="background-color:white;">
+
+                            <div class="padding-10">
+                                <h4 class="font-md"><strong>{{profile.totalPublishedEvents}}</strong>
+                                    <br>
+                                    <small>Total published Events</small>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h1>{{profile.firstName}}
+                                <span class="semi-bold">{{profile.lastName}}</span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <h2 class="row-seperator-header"><small>Events</small></h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="padding-10">
+                        <div class="content feed-list"
+                             when-scrolled="loadEvents(false)" percent="80">
+                                <div ng-hide="events.length">loading... or no events found</div>
+                                <div ng-include="'app/events/partials/events.list.html'"/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- end row -->
+        </div>
+    </div>
+</div>
+<!-- end row -->
+</div>

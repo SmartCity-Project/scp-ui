@@ -1,0 +1,149 @@
+<div class="panel">
+<div class="panel-body">
+<form novalidate="novalidate" data-smart-validate-form>
+    <div class="col-sm-12" data-smart-wizard data-smart-wizard-callback="wizardEventFormCompleteCallback">
+        <div class="form-bootstrapWizard clearfix">
+            <ul class="bootstrapWizard">
+                <li data-smart-wizard-tab="1" >
+                    <a href="#" > <span class="step">1</span> <span class="title">Geo-information</span>
+                    </a>
+                </li>
+                <li data-smart-wizard-tab="2" >
+                    <a href="#" > <span class="step">2</span> <span class="title">Basic information</span> </a>
+                </li>
+                <li data-smart-wizard-tab="3">
+                    <a href="#" > <span class="step">3</span> <span class="title">Tags</span> </a>
+                </li>
+                <li data-smart-wizard-tab="4">
+                    <a href="#" > <span class="step">4</span> <span class="title">Save</span> </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane" data-smart-wizard-pane="1" >
+                <br>
+                <h3><strong>Step 1 </strong> Geo-information</h3>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-map-marker fa-lg fa-fw"></i></span>
+                                <div angular-google-maps-geocoder 
+                                     on-select-callback="selectedResult(item, model, label)"
+                                     output="out"
+                                     placeholder="Give an address"
+                                     data-smart-validate-input
+                                     min-length="5"
+                                     wait-ms="500"/>
+                            </div>
+                        </div>
+                    </div>          
+                    <div class="col-sm-12">
+                        <b><span>Or pick location</span></b>
+                        <div class="input-group" data-location>
+                            <div class="col-sm-6">
+                                <input class="form-control" 
+                                       placeholder="Latitude" 
+                                       type="text"
+                                       ng-model="location.latitude"
+                                       data-smart-validate-input
+                                       data-required
+                                       data-message="Please specify latitude">
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control" 
+                                       placeholder="Longitude" 
+                                       type="text" 
+                                       ng-model="location.longitude"
+                                       data-smart-validate-input
+                                       data-required
+                                       data-message="Please specify longitude">
+                            </div>
+                        </div>
+                        <div class="map_container row">
+                            <div class="map_canvas">
+                                <ui-gmap-google-map center='map.center' control='control' events="map_events" zoom='map.zoom'>
+                                <ui-gmap-markers models="markers" events="marker_events" coords="'self'" options="'options'"></ui-gmap-markers>
+                                </ui-gmap-google-map>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" data-smart-wizard-pane="2" >
+                <br>
+                <h3><strong>Step 2 </strong> Basic information</h3>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" 
+                                       placeholder="Title" 
+                                       type="text" 
+                                       ng-model="event.title"
+                                       data-smart-validate-input
+                                       data-required
+                                       data-message="Please specify event title">
+                        </div>
+                    </div>                                   
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" 
+                                       placeholder="Description" 
+                                       type="text" 
+                                       ng-model="event.description"
+                                       data-smart-validate-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" data-smart-wizard-pane="3" >
+                <br>
+                <h3><strong>Step 3 </strong> Tags</h3>
+                <div class="row">
+                    <div class="col-md-12" data-required>
+                        <tags-input class="bootstrap"
+                                    name="tags"
+                                    display-property="name"
+                                    ng-model="event.tags"
+                                    min-tags="2"
+                                    allow-leftover-text="false"
+                                    load-on-focus="true"
+                                    load-on-empty="true"
+                                    max-results-to-show="32"
+                                    add-on-blur="false">
+                          <auto-complete source="loadTags($query)"></auto-complete>
+                        </tags-input>         
+                    </div>                                          
+                </div>
+            </div>
+            <div class="tab-pane" data-smart-wizard-pane="4" >
+                <br>
+                <h3><strong>Step 4</strong> Save Form</h3>
+                <br>
+
+                <h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Complete</strong></h1>
+                <h4 class="text-center">Click next to finish</h4>
+                <br>
+                <br>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="pager wizard no-margin">
+                            <li class="previous" data-smart-wizard-prev>
+                                <a href="#" class="btn btn-lg btn-default"> Previous </a>
+                            </li>
+                            <li class="next" data-smart-wizard-next>
+                                <a href="#" class="btn btn-lg txt-color-darken"> Next </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</div>

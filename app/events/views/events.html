@@ -1,0 +1,96 @@
+<div data-ui-view="" class="content" class="event-page top10">
+    <div class="row">
+        <div class="col-md-12">
+            <tags-input class="bootstrap"
+                        name="tags"
+                        display-property="name"
+                        ng-model="EventSearchCriteria.tags"
+                        allow-leftover-text="false"
+                        load-on-focus="true"
+                        load-on-empty="true"
+                        max-results-to-show="32"
+                        add-on-blur="false"
+                        add-from-autocomplete-only="true"
+                        on-tag-added="loadEvents(true)"
+                        on-tag-removed="loadEvents(true)"
+                        placeholder="Choose tags">
+                <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+            
+            <tags-input class="bootstrap"
+                        ng-show="!isAdmin"
+                        name="tags"
+                        display-property="name"
+                        ng-model="EventSearchCriteria.locations"
+                        allow-leftover-text="false"
+                        load-on-focus="true"
+                        load-on-empty="true"
+                        max-results-to-show="32"
+                        add-on-blur="false"
+                        add-from-autocomplete-only="true"
+                        on-tag-added="loadEvents(true)"
+                        on-tag-removed="loadEvents(true)"
+                        placeholder="Choose locations">
+                <auto-complete source="loadLocations($query)"></auto-complete>
+            </tags-input>
+            
+            <ui-select ng-model="EventSearchCriteria.eventState" id="value"
+                       on-select="loadEvents(true)"
+                       on-remove="loadEvents(true)"
+                       theme="bootstrap" 
+                       close-on-select="true"
+                       ng-disabled="false"
+                       title="Choose an event state">
+                <ui-select-match placeholder="Select event state">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="es.value as es in eventStates | filter:$select.search">
+                  {{es.name}}
+                </ui-select-choices>
+            </ui-select>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="map_container row">
+                <div class="map_canvas">
+                    <ui-gmap-google-map control="map.control" 
+                                        center="map.center" 
+                                        zoom="map.zoom"
+                                        pan="true"  
+                                        events="map_events">
+
+                        <ui-gmap-map-control template="app/events/partials/createEvent.map.btn.tpl.html" 
+                                             controller="EventsCtrl"
+                                             position="top-center"
+                                             index="1"/>
+                        
+                        <ui-gmap-markers models="events"
+                                        idKey="id"
+                                        doCluster="true"  
+                                        events="marker_events"
+                                        coords="'location.coordinates'" 
+                                        clusteroptions="map.clusterOptions"
+                                        options="'options'">
+                            <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                                <p ng-non-bindable>{{title}}</p>
+                            </ui-gmap-windows>
+                        </ui-gmap-markers>
+                    </ui-gmap-google-map> 
+                </div>
+            </div> 
+            
+            <br>
+            
+        </div>
+        
+		<div  class="col-md-5">
+<!--            <events-feed/>-->
+            <div class="content event-feed-list"
+                 when-scrolled="loadEvents(false)" percent="80">
+                    <div ng-hide="events.length">loading... or no events found</div>
+                    <div ng-include="'app/events/partials/events.list.html'"/> 
+                </div>
+            </div>
+		</div>
+    </div>
+</div>

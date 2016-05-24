@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-body status">
+        <div class="who clearfix">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-6 noPaddingLeft">
+                    <span class="name"><b><a ui-sref="app.profile({type:'organization', id:'{{petition.organizationId}}'})">{{petition.organizationName}}</a></b> </span>
+                    <span class="posted">Published: <b>{{petition.tracking.created | date:'yyyy-MM-dd HH:mm:ss'}}</b></span>
+                    <br>
+                    <span class="posted">Ends by: <b>{{petition.endBy | date:'yyyy-MM-dd'}}</b></span>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 noPaddingRight">
+                    <article-report article-type="'petitions'" article-data=petition/>
+                </div>
+            </div>
+            <div class="row top5">
+                <h3 class="margin-top-0">{{petition.title}} - <span class="status"><b>{{petition.petitionStatus}}</b></span></h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-xs-8 noPaddingLeft">
+                    <div class="tags">
+                        <span><b>Tags:</b></span>
+                        <span class="control-label1" ng-repeat-start="tag in petition.tags track by tag.name">{{tag.name}}</span> 
+                        <span ng-repeat-end>{{$last ? '' : ', '}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4 noPaddingRight">
+                     <!-- SIGN BUTTON -->
+                    <button class='btn btn-primary' 
+                            ng-click="petitionSign($index, petition.id)">Sign</button> Total signatures: {{petition.aggregatedSignatures.totalSignatures}}
+                </div>
+            </div>
+        </div>            
+        <div class="image">
+            <!--<img src="styles/img/realestate/6.png" alt="img">-->
+            <div class="text-wrap" ng-bind-html="petition.description">{{petition.description}}</div>
+        </div>
+        <div class="inline links">
+<!--            <div class="inline" ng-include="'app/vote/partials/vote.tpl.html'"/>-->
+            <a ng-click='vote($index, petition.id, "petitions", "positive")'><i class="fa fa-thumbs-o-up"></i> Like  {{petition.aggregatedVotes.totalPositives}}</a>
+	        <a ng-click='vote($index, petition.id, "petitions", "negative")'><i class="fa fa-thumbs-o-down"></i> Dislike {{petition.aggregatedVotes.totalNegatives}}</a>
+            <a class="text-muted" ng-click='showComments($index, "petitions", petition.id)'>Show All Comments {{petition.aggregatedComments.totalComments}}</a>
+        </div>
+        <div class="comments"><!--ng-include="'app/comments/partials/comment.tpl.html'"-->
+            <li class="message message-reply" 
+                ng-animate="'animate'" 
+                ng-repeat="comment in petition.comments track by comment.id">
+                <article-comment comment=comment/>
+            </li>
+            <li>
+                <input class="form-control input-xs" 
+                       placeholder="Type and enter" 
+                       ng-model="commentText" 
+                       ng-enter="comment($index, commentText, 'petitions', {{petition.id}})" 
+                       type="text">
+            </li>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<div ng-animate="'animate'" 
+     ng-class="{inactive: (selectedPetition != null || selectedPetition != undefined) && petition.id!=selectedPetition.id , active:(selectedPetition != null || selectedPetition != undefined) && petition.id==selectedPetition.id}"
+     ng-repeat="petition in petitions track by petition.id| limitTo:pFeedLimit"
+     ng-include="'app/petitions/partials/petition.tpl.html'"
+     ng-click="showDetailview(petition.id)">

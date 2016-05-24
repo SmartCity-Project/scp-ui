@@ -1,0 +1,7 @@
+<div ng-animate="'animate'" 
+     ng-class="{inactive: (selectedEvent != null || selectedEvent != undefined) && event.id!=selectedEvent.id , active:(selectedEvent != null || selectedEvent != undefined) && event.id==selectedEvent.id}"
+     ng-repeat="event in events track by event.id| limitTo:eFeedLimit"
+     ng-include="'app/events/partials/event.tpl.html'"
+     ng-mouseover="highlightMarker(event)"
+     ng-mouseleave="leaveMarker(event)"
+     ng-click="showDetailview(event.id)">     
