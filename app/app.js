@@ -27,6 +27,7 @@ app = angular.module('app', [
 //    'uiGmapgoogle-maps',
     
     // Smartadmin Angular Common Module
+    'app.forms',
     'SmartAdmin',
 
     // App
